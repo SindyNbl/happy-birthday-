@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blind Box Game</title>
+  <style>
+    body {
+      background-color: #800020; /* Merah Maroon */
+      color: #FFFDD0; /* Cream */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { margin-bottom: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .box {
+      background-color: #FFFDD0;
+      color: #800020;
+      border-radius: 12px;
+      padding: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .box:active { transform: scale(0.95); }
+    .box img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    /* Modal Pop-up */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #FFFDD0;
+      color: #800020;
+      padding: 20px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 300px;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #800020;
+      border-radius: 6px;
+      text-align: center;
+    }
+    button {
+      background-color: #800020;
+      color: #FFFDD0;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Daftar Blind Box</h1>
+  <div class="grid">
+    <div class="box" onclick="bukaPopUp(1)">
+      <img src="https://via.placeholder.com/100/800020/FFFDD0?text=Box+1" alt="Blind Box 1">
+      <p>Blind Box #1</p>
+    </div>
+    <div class="box" onclick="bukaPopUp(2)">
+      <img src="https://via.placeholder.com/100/800020/FFFDD0?text=Box+2" alt="Blind Box 2">
+      <p>Blind Box #2</p>
+    </div>
+  </div>
+
+  <!-- Pop-up Kuis -->
+  <div id="quizModal" class="modal">
+    <div class="modal-content">
+      <h3 id="pertanyaan">Pertanyaan...</h3>
+      <input type="text" id="jawabanInput" placeholder="Jawaban kamu">
+      <br>
+      <button onclick="cekJawaban()">Buka</button>
+    </div>
+  </div>
+
+  <script>
+    const dataBox = {
+      1: { pertanyaan: "Apa warna bendera Indonesia?", jawaban: "merah putih", nomor: "Blind Box Nomor: #8829" },
+      2: { pertanyaan: "1 + 1 berapa?", jawaban: "2", nomor: "Blind Box Nomor: #1042" }
+    };
+
+    let boxAktif = null;
+
+    function bukaPopUp(id) {
+      boxAktif = id;
+      document.getElementById('pertanyaan').innerText = dataBox[id].pertanyaan;
+      document.getElementById('jawabanInput').value = '';
+      document.getElementById('quizModal').style.display = 'flex';
+    }
+
+    function cekJawaban() {
+      const input = document.getElementById('jawabanInput').value.trim().toLowerCase();
+      const kuis = dataBox[boxAktif];
+
+      if (input === kuis.jawaban.toLowerCase()) {
+        alert("Benar! " + kuis.nomor);
+        document.getElementById('quizModal').style.display = 'none';
+      } else {
+        alert("Jawaban salah! Blind box tidak dapat dibuka.");
+      }
+    }
+  </script>
+</body>
+</html>
