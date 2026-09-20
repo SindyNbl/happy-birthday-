@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blind Box Game</title>
+  <title>Blind Gift Game</title>
   <style>
     body {
       background-color: #800020; /* Merah Maroon */
@@ -77,18 +77,18 @@
   <div class="grid">
     <div class="box" onclick="bukaPopUp(1)">
       <img src="https://via.placeholder.com/100/800020/FFFDD0?text=Box+1" alt="Blind Box 1">
-      <p>Blind Box #1</p>
+      <p>Blind Box 1</p>
     </div>
     <div class="box" onclick="bukaPopUp(2)">
       <img src="https://via.placeholder.com/100/800020/FFFDD0?text=Box+2" alt="Blind Box 2">
-      <p>Blind Box #2</p>
+      <p>Blind Box 2</p>
     </div>
   </div>
 
   <!-- Pop-up Kuis -->
   <div id="quizModal" class="modal">
     <div class="modal-content">
-      <h3 id="pertanyaan">Pertanyaan...</h3>
+      <h3 id="pertanyaan">Jawab pertanyaan dulu syggg...</h3>
       <input type="text" id="jawabanInput" placeholder="Jawaban kamu">
       <br>
       <button onclick="cekJawaban()">Buka</button>
@@ -97,8 +97,9 @@
 
   <script>
     const dataBox = {
-      1: { pertanyaan: "Apa warna bendera Indonesia?", jawaban: "merah putih", nomor: "Blind Box Nomor: #8829" },
-      2: { pertanyaan: "1 + 1 berapa?", jawaban: "2", nomor: "Blind Box Nomor: #1042" }
+      1: { pertanyaan: "apa jajanan yang aku suka?", jawaban: "dimsum", nomor: "Blind Box Nomor: 1" },
+      2: { pertanyaan: "apa yang aku suka ketika kita lagi jalan?", jawaban: "gandengan tangan", nomor: "Blind Box Nomor: 2" },
+      3: { pertanyaan: "kamu sayang aku gaa?", jawaban: "sayang dong", nomor: "Blind Box Nomor: 3" }
     };
 
     let boxAktif = null;
